@@ -15,6 +15,10 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@webapp-layout/*": ["src/app/layouts/*"],
+      "@webapp-ui/*": ["src/app/user-interfaces/*"]
+    }
   }
 }
