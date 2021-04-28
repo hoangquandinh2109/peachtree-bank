@@ -18,7 +18,8 @@
     ],
     "paths": {
       "@webapp-layout/*": ["src/app/layouts/*"],
-      "@webapp-ui/*": ["src/app/user-interfaces/*"]
+      "@webapp-ui/*": ["src/app/user-interfaces/*"],
+      "@webapp-section/*": ["src/app/sections/*"]
     }
   }
 }

@@ -1,1 +1,27 @@
-<app-assignment-layout></app-assignment-layout>
+<app-assignment-layout>
+    <div class="container">
+        <div class="section__container">
+            <div class="section__item">
+                <div class="section__item-wrapper">
+                    <div class="section__item-header">
+                        <i class="section__item-header-icon lni lni-credit-cards"></i>
+                        <p class="section__item-header-title"><strong>Make</strong> Transfer</p>
+                    </div>
+                    <div class="section__item-body">
+                        <app-money-transfer [myAccountBalance]="myAccountBalance"></app-money-transfer>
+                    </div>
+                </div>
+            </div>
+            <div class="section__item">
+                <div class="section__item-wrapper">
+                    <div class="section__item-header">
+                        <i class="section__item-header-icon lni lni-list"></i>
+                        <p class="section__item-header-title">Transactions <strong>List</strong></p>
+                    </div>
+                    <div class="section__item-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-assignment-layout>

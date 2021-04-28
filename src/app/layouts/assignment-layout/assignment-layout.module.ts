@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+// ? Components
 import { AssignmentLayoutComponent } from './assignment-layout.component';
 
+// ? Modules
 import { BbUIModule } from '@webapp-ui/bb-ui/bb-ui.module';
 
 const COMPONENTS = [AssignmentLayoutComponent]
@@ -11,6 +14,9 @@ const COMPONENTS = [AssignmentLayoutComponent]
   imports: [
     CommonModule,
     BbUIModule
-  ], exports: [...COMPONENTS]
+  ], exports: [
+    ...COMPONENTS,
+    BbUIModule
+  ]
 })
 export class AssignmentLayoutModule { }

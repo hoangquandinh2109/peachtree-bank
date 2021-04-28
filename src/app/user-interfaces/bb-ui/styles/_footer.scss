@@ -1,0 +1,16 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  color: $primary-blue;
+  background-color: $white;
+  p{
+    margin: 12px 0;
+  }
+}

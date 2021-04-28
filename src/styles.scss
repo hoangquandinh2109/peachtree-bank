@@ -1,3 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./scss/vars";
 @import "./scss/mixin";
-@import "./app/user-interfaces/bb-ui/styles/main.scss";
+@import "./scss/container";
+@import "./app/user-interfaces/bb-ui/styles/theme.scss";

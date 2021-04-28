@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.body {
+  position: fixed;
+  top: 80px;
+  bottom: 40px;
+  right: 0;
+  left: 0;
+  border-top: 1px solid #d4d4d6;
+  &--blur-bg{
+    background-image: url(/assets/background.jpg);
+    background-size: cover;
+    filter: blur(2.5px);
+    -webkit-filter: blur(2.5px);
+  }
+}
+
+@import "./header";
+@import "./logo";
+@import "./footer";
+@import "./section";
+@import "./form";

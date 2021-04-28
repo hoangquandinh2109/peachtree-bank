@@ -1,0 +1,22 @@
+<form>
+    <div class="form-group">
+        <label for="fromAccount">From Account</label>
+        <input class="form-control" type="text" id="fromAccount" disabled [value]="'My Personal Account: € ' + myAccountBalance">
+    </div>
+    <div class="form-group" [class.error]="false">
+        <label for="toAccount">To Account</label>
+        <input class="form-control" type="text" placeholder="type an account name" id="toAccount">
+        <div class="error-message">This field is required</div>
+    </div>
+    <div class="form-group" [class.error]="false">
+        <label for="amount">Amount</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">€</div>
+            </div>
+            <input class="form-control" (keypress)="digitOnly($event)" type="text" placeholder="specify the amount" id="amount">
+        </div>
+        <div class="error-message">There is not enough balance</div>
+    </div>
+    <app-submit-button (submitForm)="submit($event)"></app-submit-button>
+</form>

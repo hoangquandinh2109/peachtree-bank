@@ -1,0 +1,31 @@
+.spacer {
+  flex: 1;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background-color: $white;
+  #text-header {
+    font-size: 0.9rem;
+    color: $primary-blue;
+  }
+  padding: 0 20px;
+}
+
+@include media-breakpoint-down(sm) {
+  header {
+    height: 60px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    #text-header {
+      margin: 0;
+    }
+  }
+}

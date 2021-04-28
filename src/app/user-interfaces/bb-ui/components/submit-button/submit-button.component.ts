@@ -9,6 +9,7 @@ export class SubmitButtonComponent {
   @Output() submitForm: EventEmitter<any> = new EventEmitter();
 
   triggerSubmit(event: Event): void {
+    event.preventDefault();
     this.submitForm.emit(event);
   }
 

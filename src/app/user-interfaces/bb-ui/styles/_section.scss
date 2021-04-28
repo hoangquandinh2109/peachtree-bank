@@ -1,0 +1,36 @@
+.section {
+    &__container {
+      display: grid;
+      grid-column-gap: 30px;
+      grid-template-columns: 350px auto;
+      padding-top: 60px;
+      @include media-breakpoint-down(sm) {
+        grid-template-columns: auto;
+        grid-row-gap: 15px;
+      }
+    }
+    &__item {
+      &-wrapper{
+        border-radius: 14px;
+        background-color: $white;
+        overflow: hidden;
+      }
+      &-header{
+        background-color: $primary-blue;
+        color: $white;
+        display: flex;
+        height: 66px;
+        padding-left: 20px;
+        align-items: center;
+        &-icon{
+          font-size: 25px;
+        }
+        &-title{
+          padding-left: 15px;
+        }
+      }
+      &-body{
+        padding: 20px;
+      }
+    }
+}
