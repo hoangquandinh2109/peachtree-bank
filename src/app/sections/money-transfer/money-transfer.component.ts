@@ -1,26 +1,34 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+// ? Services
+import { ModalService } from '@webapp-ui/bb-ui/services/modal.service';
+
+// ? External Components
+import { ReviewTransferComponent } from './review-transfer/review-transfer.component';
 
 @Component({
   selector: 'app-money-transfer',
   templateUrl: './money-transfer.component.html',
   styleUrls: ['./money-transfer.component.scss']
 })
-export class MoneyTransferComponent implements OnInit {
+export class MoneyTransferComponent implements OnChanges {
   @Input()
-  public myAccountBalance: number;
+  public myAccount: any;
   public transferForm: FormGroup;
-  constructor() {
-    this.transferForm = new FormGroup({
-      toAccount: new FormControl('', Validators.required),
-      amount: new FormControl('', Validators.pattern('[0-9.]*')),
-    });
+
+  constructor(private modalSvc: ModalService) {
+    this.initNewForm();
   }
 
-  public ngOnInit(): void {
+  public ngOnChanges(): void {
+    if (this.myAccount.balance <= -500) {
+      this.transferForm?.controls.amount.disable();
+    }
   }
 
   public digitOnly(event: KeyboardEvent): boolean {
+    // allow 'Enter' key
     if (event.key === 'Enter') {
       return true;
     }
@@ -28,13 +36,29 @@ export class MoneyTransferComponent implements OnInit {
   }
 
   public formIsError(formControlName: string): boolean {
-    const {invalid, dirty, touched, errors} = this.transferForm.controls[formControlName];
-    console.log({invalid, dirty, touched, errors, formControlName});
+    const { invalid, dirty, touched, value } = this.transferForm.controls[formControlName];
+    if (formControlName === 'amount') {
+      return (invalid || value > this.myAccount.balance) && (dirty || touched);
+    }
     return invalid && (dirty || touched);
   }
 
-  public submit(event: Event): void {
-    alert('hi')
+  public submit(): void {
+    if (this.transferForm.valid && this.transferForm.controls.amount.value <= this.myAccount.balance) {
+      this.modalSvc.openModal(ReviewTransferComponent, this.transferForm.value);
+      this.modalSvc.afterClosed().subscribe(result => {
+        if (result) {
+          this.myAccount.balance -= +this.transferForm.controls.amount.value;
+          this.initNewForm();
+        }
+      });
+    }
   }
 
+  private initNewForm(): void {
+    this.transferForm = new FormGroup({
+      toAccount: new FormControl('', Validators.required),
+      amount: new FormControl('', Validators.pattern('[0-9.]*')),
+    });
+  }
 }

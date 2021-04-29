@@ -1,0 +1,34 @@
+.modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    &__body {
+        background-color: $white;
+        min-width: 500px;
+        border-radius: 4px;
+        border: 1px solid #666666;
+        position: relative;
+        animation-name: slideInUp;
+        animation-duration: 0.5s;
+    }
+    &__overlay {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: $primary-black;
+        opacity: 0.7;
+        z-index: 900;
+    }
+}
+@keyframes slideInUp {
+    from {top: 100%}
+    to {top: 0%}
+  }

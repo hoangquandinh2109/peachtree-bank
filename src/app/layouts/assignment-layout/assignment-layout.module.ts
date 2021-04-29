@@ -7,7 +7,7 @@ import { AssignmentLayoutComponent } from './assignment-layout.component';
 // ? Modules
 import { BbUIModule } from '@webapp-ui/bb-ui/bb-ui.module';
 
-const COMPONENTS = [AssignmentLayoutComponent]
+const COMPONENTS = [AssignmentLayoutComponent];
 
 @NgModule({
   declarations: [...COMPONENTS],

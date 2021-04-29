@@ -1,0 +1,28 @@
+.card {
+  &-header {
+    position: relative;
+    border-bottom: 1px solid $card-border-color;
+    h2 {
+      margin: 0;
+      padding: 20px 15px;
+      font-weight: normal;
+    }
+  }
+  &-closing-btn {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+  }
+  &-body {
+    padding: 20px 15px 35px;
+  }
+  &-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+    border-top: 1px solid $card-border-color;
+    button {
+      font-size: 1rem;
+    }
+  }
+}

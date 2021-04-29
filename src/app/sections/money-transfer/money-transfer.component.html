@@ -2,7 +2,7 @@
     <div class="form-group">
         <label for="fromAccount">From Account</label>
         <input class="form-control" type="text" id="fromAccount" disabled
-            [value]="'My Personal Account: € ' + myAccountBalance">
+            [value]="'My Personal Account: € ' + (myAccount.balance | number: '1.0-2')">
     </div>
     <div class="form-group" [class.error]="formIsError('toAccount')">
         <label for="toAccount">To Account</label>
@@ -10,17 +10,17 @@
             id="toAccount">
         <div class="error-message">This field is required</div>
     </div>
-    <div class="form-group" [class.error]="formIsError('amount') || transferForm.controls['amount'].value > myAccountBalance">
+    <div class="form-group" [class.error]="formIsError('amount')">
         <label for="amount">Amount</label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div class="input-group-text">€</div>
             </div>
-            <input [disabled]="myAccountBalance <= -500" class="form-control" (keypress)="digitOnly($event)" type="text" formControlName="amount"
+            <input class="form-control" (keypress)="digitOnly($event)" type="text" formControlName="amount"
                 placeholder="specify the amount" id="amount">
         </div>
-        <div class="error-message" *ngIf="transferForm.controls['amount'].value > myAccountBalance">There is not enough balance</div>
+        <div class="error-message" *ngIf="transferForm.controls['amount'].value > myAccount.balance">There is not enough balance</div>
         <div class="error-message" *ngIf="transferForm.controls['amount'].invalid">This field allow only positive number</div>
     </div>
-    <app-submit-button [disabled]="transferForm.invalid" (submitForm)="submit($event)"></app-submit-button>
+    <app-submit-button [disabled]="transferForm.invalid || transferForm.controls['amount'].value > myAccount.balance" (submitForm)="submit()"></app-submit-button>
 </form>

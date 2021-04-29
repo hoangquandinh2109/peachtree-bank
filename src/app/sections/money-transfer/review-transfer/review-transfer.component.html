@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="card-header">
+        <h2><strong>Review</strong> Transfer</h2>
+        <i class="card-closing-btn lni lni-close" (click)="close()"></i>
+    </div>
+    <div class="card-body">
+        <p><i>Are you ready to send out this transfer?</i></p>
+        <p class="info-title"><strong>It will be send to the account</strong></p>
+        <p>{{data.toAccount}}</p>
+        <p class="info-title"><strong>With the amount of:</strong></p>
+        <p>€ {{data.amount}}</p>
+    </div>
+    <div class="card-footer">
+        <button class="btn" (click)="close()">Close</button>
+        <button class="btn btn-primary" (click)="sendTransfer()">Send Transfer</button>
+    </div>
+</div>
