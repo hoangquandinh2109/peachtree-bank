@@ -19,7 +19,9 @@
     "paths": {
       "@webapp-layout/*": ["src/app/layouts/*"],
       "@webapp-ui/*": ["src/app/user-interfaces/*"],
-      "@webapp-section/*": ["src/app/sections/*"]
+      "@webapp-section/*": ["src/app/sections/*"],
+      "@webapp-svc/*": ["src/app/services/*"],
+      "@webapp-env/*": ["src/environments/*"]
     }
   }
 }
