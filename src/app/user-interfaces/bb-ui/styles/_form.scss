@@ -83,4 +83,7 @@
       border: 1px solid #c35323;
       color: $white;
   }
+  &:disabled {
+    opacity: 0.7;
+  }
 }

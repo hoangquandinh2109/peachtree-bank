@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-submit-button',
@@ -6,6 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./submit-button.component.scss']
 })
 export class SubmitButtonComponent {
+  @Input() disabled: boolean;
   @Output() submitForm: EventEmitter<any> = new EventEmitter();
 
   triggerSubmit(event: Event): void {

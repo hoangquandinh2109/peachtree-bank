@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 // ? Components
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ const COMPONENTS =  [
   declarations: [...COMPONENTS],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AssignmentLayoutModule,
   ],
   providers: [],

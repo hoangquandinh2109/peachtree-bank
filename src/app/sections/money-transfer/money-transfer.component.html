@@ -1,22 +1,26 @@
-<form>
+<form [formGroup]="transferForm">
     <div class="form-group">
         <label for="fromAccount">From Account</label>
-        <input class="form-control" type="text" id="fromAccount" disabled [value]="'My Personal Account: € ' + myAccountBalance">
+        <input class="form-control" type="text" id="fromAccount" disabled
+            [value]="'My Personal Account: € ' + myAccountBalance">
     </div>
-    <div class="form-group" [class.error]="false">
+    <div class="form-group" [class.error]="formIsError('toAccount')">
         <label for="toAccount">To Account</label>
-        <input class="form-control" type="text" placeholder="type an account name" id="toAccount">
+        <input class="form-control" type="text" formControlName="toAccount" placeholder="type an account name"
+            id="toAccount">
         <div class="error-message">This field is required</div>
     </div>
-    <div class="form-group" [class.error]="false">
+    <div class="form-group" [class.error]="formIsError('amount') || transferForm.controls['amount'].value > myAccountBalance">
         <label for="amount">Amount</label>
         <div class="input-group">
             <div class="input-group-prepend">
-              <div class="input-group-text">€</div>
+                <div class="input-group-text">€</div>
             </div>
-            <input class="form-control" (keypress)="digitOnly($event)" type="text" placeholder="specify the amount" id="amount">
+            <input [disabled]="myAccountBalance <= -500" class="form-control" (keypress)="digitOnly($event)" type="text" formControlName="amount"
+                placeholder="specify the amount" id="amount">
         </div>
-        <div class="error-message">There is not enough balance</div>
+        <div class="error-message" *ngIf="transferForm.controls['amount'].value > myAccountBalance">There is not enough balance</div>
+        <div class="error-message" *ngIf="transferForm.controls['amount'].invalid">This field allow only positive number</div>
     </div>
-    <app-submit-button (submitForm)="submit($event)"></app-submit-button>
+    <app-submit-button [disabled]="transferForm.invalid" (submitForm)="submit($event)"></app-submit-button>
 </form>
