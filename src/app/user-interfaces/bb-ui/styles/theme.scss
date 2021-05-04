@@ -14,6 +14,7 @@ p {
   right: 0;
   left: 0;
   border-top: 1px solid #d4d4d6;
+  overflow-y: auto;
   &--blur-bg{
     background-image: url(/assets/background.jpg);
     background-size: cover;

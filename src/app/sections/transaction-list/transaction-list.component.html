@@ -1,4 +1,4 @@
-<app-filter></app-filter>
+<app-filter (inputChange)="filterTransactionsByMerchant($event)"></app-filter>
 <div id="transaction-list-wrapper">
     <app-transaction-item *ngFor="let item of data">
         <div data-test-hook="transactionColour" [style.backgroundColor]="item.categoryCode"></div>

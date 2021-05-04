@@ -50,8 +50,9 @@ export class MoneyTransferComponent implements OnChanges {
         if (result) {
           this.myAccount.balance -= +this.transferForm.controls.amount.value;
           const { amount, toAccount: name } = this.transferForm.value;
-          this.myAccount.transactions.push({
-            categoryCode: '#c12020',
+          const categoryCode = ['#c12020', '#e25a2c', '#fbbb1b'][Math.floor(Math.random() * 3)];
+          this.myAccount.transactions = [...this.myAccount.transactions, {
+            categoryCode,
             dates: { valueDate: new Date().getTime() },
             merchant: { name },
             transaction: {
@@ -59,7 +60,7 @@ export class MoneyTransferComponent implements OnChanges {
               creditDebitIndicator: 'DBIT',
               amountCurrency: { amount }
             }
-          });
+          }];
           this.initNewForm();
         }
       });
