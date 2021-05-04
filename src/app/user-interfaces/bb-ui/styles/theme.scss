@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: $main-font;
 }
 
 p {
@@ -22,6 +22,7 @@ p {
   }
 }
 
+@import "./sizing";
 @import "./header";
 @import "./logo";
 @import "./footer";
@@ -29,3 +30,4 @@ p {
 @import "./form";
 @import "./modal";
 @import "./card";
+@import "./transaction-item";

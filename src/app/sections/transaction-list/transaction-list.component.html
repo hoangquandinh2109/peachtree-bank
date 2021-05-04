@@ -1,10 +1,10 @@
 <app-filter></app-filter>
-<ng-container *ngFor="let item of transactions">
-    <app-transaction-item>
+<div id="transaction-list-wrapper">
+    <app-transaction-item *ngFor="let item of data">
         <div data-test-hook="transactionColour" [style.backgroundColor]="item.categoryCode"></div>
         <div data-test-hook="transactionDate">{{stringDate(item.dates.valueDate)}}</div>
         <div data-test-hook="transactionMerchantName">{{item.merchant.name}}</div>
         <div data-test-hook="transactionType">{{item.transaction.type}}</div>
-        <div data-test-hook="transactionAmount" [class.credit]="item.transaction.creditDebitIndicator === 'CRDT'">{{item.transaction.amountCurrency.amount}}</div>
+        <div data-test-hook="transactionAmount" [class.credit]="item.transaction.creditDebitIndicator === 'CRDT'">€ {{item.transaction.creditDebitIndicator === 'CRDT' ? '' : '-'}}{{item.transaction.amountCurrency.amount}}</div>
     </app-transaction-item>
-</ng-container>
+</div>

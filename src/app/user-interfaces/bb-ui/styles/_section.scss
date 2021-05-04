@@ -20,7 +20,7 @@
         color: $white;
         display: flex;
         height: 66px;
-        padding-left: 20px;
+        padding-left: $large-spacing;
         align-items: center;
         &-icon{
           font-size: 25px;
@@ -30,7 +30,7 @@
         }
       }
       &-body{
-        padding: 20px;
+        padding: $large-spacing;
       }
     }
 }

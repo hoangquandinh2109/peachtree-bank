@@ -49,6 +49,17 @@ export class MoneyTransferComponent implements OnChanges {
       this.modalSvc.afterClosed().subscribe(result => {
         if (result) {
           this.myAccount.balance -= +this.transferForm.controls.amount.value;
+          const { amount, toAccount: name } = this.transferForm.value;
+          this.myAccount.transactions.push({
+            categoryCode: '#c12020',
+            dates: { valueDate: new Date().getTime() },
+            merchant: { name },
+            transaction: {
+              type: 'Online Transfer',
+              creditDebitIndicator: 'DBIT',
+              amountCurrency: { amount }
+            }
+          });
           this.initNewForm();
         }
       });

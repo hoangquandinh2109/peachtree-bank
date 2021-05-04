@@ -4,17 +4,17 @@
     border-bottom: 1px solid $card-border-color;
     h2 {
       margin: 0;
-      padding: 20px 15px;
+      padding: $large-spacing 15px;
       font-weight: normal;
     }
   }
   &-closing-btn {
     position: absolute;
-    top: 20px;
+    top: $large-spacing;
     right: 15px;
   }
   &-body {
-    padding: 20px 15px 35px;
+    padding: $large-spacing 15px 35px;
   }
   &-footer {
     display: flex;

@@ -1,7 +1,10 @@
+@import '../../../../scss/vars';
+
+
 button + button {
   margin-left: 5px;
 }
 .info-title {
-    padding-top: 20px;
+    padding-top: $large-spacing;
     padding-bottom: 15px;
 }

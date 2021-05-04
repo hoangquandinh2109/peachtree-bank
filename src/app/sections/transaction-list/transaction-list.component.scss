@@ -1,3 +1,23 @@
+@import '../../../scss/vars';
+
 app-transaction-item{
     display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 16px;
+    margin: 30px 0;
+    height: 80px;
+    font-weight: bold;
+    color: $primary-black;
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+#transaction-list-wrapper {
+    overflow-y: auto;
+    max-height: 500px;
 }

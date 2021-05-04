@@ -1,0 +1,30 @@
+[data-test-hook="transactionColour"] {
+    width: 6px;
+    background-color: $primary-black;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+[data-test-hook="transactionDate"] {
+    flex-basis: 80px; 
+    font-size: 15px;
+}
+.merchant-details {
+    flex-basis: calc(85% - 80px);
+    [data-test-hook="transactionMerchantName"] {
+        font-size: 17px;
+    }
+    [data-test-hook="transactionType"] {
+        font-size: 15px;
+        color: $secondary-gray;
+    }
+}
+[data-test-hook="transactionAmount"] {
+    flex-basis: 15%;
+    color: $primary-red;
+    text-align: right;
+    &.credit {
+        color: $primary-green;
+    }
+}
