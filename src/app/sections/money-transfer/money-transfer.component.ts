@@ -16,13 +16,14 @@ export class MoneyTransferComponent implements OnChanges {
   @Input()
   public myAccount: any;
   public transferForm: FormGroup;
+  public readonly maxDebt: number = 500;
 
   constructor(private modalSvc: ModalService) {
     this.initNewForm();
   }
 
   public ngOnChanges(): void {
-    if (this.myAccount.balance <= -500) {
+    if (this.myAccount.balance <= -this.maxDebt) {
       this.transferForm?.controls.amount.disable();
     }
   }
@@ -36,15 +37,16 @@ export class MoneyTransferComponent implements OnChanges {
   }
 
   public formIsError(formControlName: string): boolean {
-    const { invalid, dirty, touched, value } = this.transferForm.controls[formControlName];
+    const { invalid, dirty, touched, value, errors } = this.transferForm.controls[formControlName];
     if (formControlName === 'amount') {
-      return (invalid || value > this.myAccount.balance) && (dirty || touched);
+      console.log(errors)
+      return (invalid || value > this.myAccount.balance + this.maxDebt) && (dirty || touched);
     }
     return invalid && (dirty || touched);
   }
 
   public submit(): void {
-    if (this.transferForm.valid && this.transferForm.controls.amount.value <= this.myAccount.balance) {
+    if (this.transferForm.valid && this.transferForm.controls.amount.value <= this.myAccount.balance + this.maxDebt) {
       this.modalSvc.openModal(ReviewTransferComponent, this.transferForm.value);
       this.modalSvc.afterClosed().subscribe(result => {
         if (result) {
@@ -70,7 +72,7 @@ export class MoneyTransferComponent implements OnChanges {
   private initNewForm(): void {
     this.transferForm = new FormGroup({
       toAccount: new FormControl('', Validators.required),
-      amount: new FormControl('', Validators.pattern('[0-9.]*')),
+      amount: new FormControl('', [Validators.required, Validators.pattern('[0-9.]*')]),
     });
   }
 }

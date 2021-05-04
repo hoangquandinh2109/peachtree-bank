@@ -19,8 +19,11 @@
             <input class="form-control" (keypress)="digitOnly($event)" type="text" formControlName="amount"
                 placeholder="specify the amount" id="amount">
         </div>
-        <div class="error-message" *ngIf="transferForm.controls['amount'].value > myAccount.balance">There is not enough balance</div>
-        <div class="error-message" *ngIf="transferForm.controls['amount'].invalid">This field allow only positive number</div>
+        <div class="error-message" *ngIf="transferForm.controls['amount'].value > myAccount.balance + maxDebt">There is not enough balance</div>
+        <ng-container *ngIf="transferForm.controls['amount'].invalid">
+            <div class="error-message" *ngIf="transferForm.controls['amount'].errors?.pattern">This field allow only positive number</div>
+            <div class="error-message" *ngIf="transferForm.controls['amount'].errors?.required">This field cannot be null</div>
+        </ng-container>
     </div>
-    <app-submit-button [disabled]="transferForm.invalid || transferForm.controls['amount'].value > myAccount.balance" (submitForm)="submit()"></app-submit-button>
+    <app-submit-button [disabled]="transferForm.invalid || transferForm.controls['amount'].value > myAccount.balance + maxDebt" (submitForm)="submit()"></app-submit-button>
 </form>
